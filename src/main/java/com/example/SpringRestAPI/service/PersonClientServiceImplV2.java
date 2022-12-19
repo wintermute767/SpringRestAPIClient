@@ -17,10 +17,10 @@ public class PersonClientServiceImplV2 implements PersonClientService<PersonV2> 
     RestTemplate restTemplate;
 
     final String urlAddress;
-
+    @Autowired
     public PersonClientServiceImplV2(   ) {
         this.urlAddress = System.getenv("URLADDRESSED")+"/api/v2/person/";
-        System.out.println(urlAddress);
+        System.out.println( System.getenv());
     }
 
 
