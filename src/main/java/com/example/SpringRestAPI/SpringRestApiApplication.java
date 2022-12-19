@@ -12,10 +12,12 @@ import org.springframework.http.HttpStatus;
 
 public class SpringRestApiApplication {
 
+
+
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        
+        System.out.println(System.getenv("URLADDRESSED"));
         //API v1
         PersonClientServiceImplV1 clientV1 = applicationContext.getBean(PersonClientServiceImplV1.class);
 

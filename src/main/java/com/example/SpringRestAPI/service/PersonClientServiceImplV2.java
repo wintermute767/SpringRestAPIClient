@@ -18,8 +18,8 @@ public class PersonClientServiceImplV2 implements PersonClientService<PersonV2> 
 
     final String urlAddress;
 
-    public PersonClientServiceImplV2(@Value("${URLADDRESSED:serverRestApi.org}")  String urlAddress) {
-        this.urlAddress = "http://"+urlAddress+":8443/api/v2/person/";
+    public PersonClientServiceImplV2(   ) {
+        this.urlAddress = System.getenv("URLADDRESSED")+"/api/v2/person/";
     }
 
 
