@@ -1,25 +1,12 @@
 package com.example.SpringRestAPI.config;
 
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.ssl.SSLContextBuilder;
-import org.springframework.beans.factory.annotation.Value;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-
-import javax.net.ssl.SSLContext;
-import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
 
 
 @Configuration
@@ -27,7 +14,7 @@ import java.security.cert.CertificateException;
 @PropertySource("application.properties")
 public class AppConfig {
 
-
+/*
     @Value("${trust.store}")
     private Resource trustStore;
 
@@ -44,14 +31,15 @@ public class AppConfig {
         CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConFactory).build();
         ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(requestFactory);
-    }
-    /*@Bean(name = "restTemplateByPassSSL")
+        }*/
+
+    @Bean(name = "restTemplateByPassSSL")
     RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.setObjectMapper(new ObjectMapper());
-        restTemplate.getMessageConverters().add(0,converter);
+        restTemplate.getMessageConverters().add(0, converter);
 
         return restTemplate;
-    }*/
+    }
 }
