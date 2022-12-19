@@ -15,41 +15,42 @@ public class SpringRestApiApplication {
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-
+        
         //API v1
         PersonClientServiceImplV1 clientV1 = applicationContext.getBean(PersonClientServiceImplV1.class);
 
-        PersonV1 newPerson = new PersonV1("Andrew1111", "Kotov", 30L, 182L);
+        PersonV1 newPerson = new PersonV1("Andrew", "Kotov", 30L, 182L);
         HttpStatus status = clientV1.addPerson(newPerson);
-        System.out.println("Add Person Response = " + status);
+        System.out.println("Add personV1 Response = " + status);
 
         newPerson = clientV1.getById(0L);
-        System.out.println("Person with id=0 : " + newPerson);
+        System.out.println("Get personV1 with id=0: " + newPerson);
 
         clientV1.updatePerson(0L, newPerson);
 
         newPerson = clientV1.getById(0L);
-        System.out.println("Person with id=0 : " + newPerson);
+        System.out.println("PersonV1 update with id=0: " + newPerson);
 
         clientV1.deletePerson(0L);
-
+        System.out.println("PersonV1 with id=0 remove");
 
         //API v2
         PersonClientServiceImplV2 clientV2 = applicationContext.getBean(PersonClientServiceImplV2.class);
 
-        PersonV2 newPersonV2 = new PersonV2("Andrew1111", "Kotov", 30L, 182L, 3L, "Moscov");
+        PersonV2 newPersonV2 = new PersonV2("Sergey", "Ivanov", 25L, 167L, 3L, "Moscov");
         status = clientV2.addPerson(newPersonV2);
-        System.out.println("Add Person Response = " + status);
+        System.out.println("Add personV2 Response :" + status);
 
         newPersonV2 = clientV2.getById(0L);
-        System.out.println("Person with id=0 : " + newPersonV2);
+        System.out.println("Get personV2 with id=0: " + newPersonV2);
 
         clientV2.updatePerson(0L, newPersonV2);
 
         newPersonV2 = clientV2.getById(0L);
-        System.out.println("Person with id=0 : " + newPersonV2);
+        System.out.println("PersonV2 update with id=0: " + newPersonV2);
 
         clientV2.deletePerson(0L);
+        System.out.println("PersonV2 with id=0 remove");
         applicationContext.close();
     }
 

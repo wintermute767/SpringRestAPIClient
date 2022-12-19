@@ -18,7 +18,7 @@ public class PersonClientServiceImplV1 implements PersonClientService<PersonV1> 
 
     final String urlAddress;
 
-    public PersonClientServiceImplV1(@Value("${URLADDRESSED}")  String urlAddress) {
+    public PersonClientServiceImplV1(@Value("${URLADDRESSED}:server")  String urlAddress) {
         this.urlAddress = "https://"+urlAddress+":8443/api/v2/person/";
     }
 
