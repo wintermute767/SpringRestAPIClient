@@ -19,7 +19,7 @@ public class PersonClientServiceImplV1 implements PersonClientService<PersonV1> 
     final String urlAddress;
 
     public PersonClientServiceImplV1() {
-        this.urlAddress = System.getenv("URLADDRESSED")+"/api/v2/person/";
+        this.urlAddress = System.getenv("URLADDRESSED")+"/api/v1/person/";
     }
 
 
